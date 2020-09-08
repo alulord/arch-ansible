@@ -1,0 +1,42 @@
+---
+- name: Install filesystem packages
+  pacman:
+    name: "{{ filesystem.packages }}"
+    state: present
+
+- name: Unmout snapshots before creating config
+  mount:
+    state: unmounted
+    path: /.snapshots
+  tags: snapper
+
+- name: Remove .snapshots dir
+  file:
+    path: /.snapshots
+    state: absent
+  tags: snapper
+
+- name: Create snapper config
+  command: snapper -c root create-config /
+  tags: snapper
+
+- name: Disable time snapshots
+  lineinfile:
+    path: /etc/snapper/configs/root
+    regexp: "^TIMELINE_CREATE="
+    line: 'TIMELINE_CREATE="no"'
+  tags: snapper
+
+- name: Set number of snapshots
+  lineinfile:
+    path: /etc/snapper/configs/root
+    regexp: "^NUMBER_LIMIT="
+    line: 'NUMBER_LIMIT="20"'
+  tags: snapper
+
+- name: Set number of important snapshots
+  lineinfile:
+    path: /etc/snapper/configs/root
+    regexp: "^NUMBER_LIMIT_IMPORTANT="
+    line: 'NUMBER_LIMIT_IMPORTANT="10"'
+  tags: snapper

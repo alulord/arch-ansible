@@ -1,0 +1,20 @@
+---
+- name: Install NetworkManager and dependencies
+  pacman:
+    name:
+      - networkmanager
+      - networkmanager-openvpn
+    state: present
+
+- name: Enable and start NetworkManager
+  service:
+    name: NetworkManager.service
+    enabled: yes
+    state: started
+
+- name: Enable and start NetworkManager dispatcher
+  service:
+    name: NetworkManager-dispatcher.service
+    enabled: yes
+    state: started
+  when: network.dispatcher == True

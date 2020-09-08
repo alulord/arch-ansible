@@ -1,0 +1,33 @@
+---
+- name: Install LibreOffice
+  pacman:
+    name: libreoffice-fresh
+    state: present
+
+- name: Install enscript
+  pacman:
+    name: enscript
+    state: present
+
+- name: Install Simple Scan
+  pacman:
+    name: simple-scan
+    state: present
+
+- name: Install qalculate
+  pacman:
+    name: qalculate-gtk
+    state: present
+
+- name: Install GNU Plot
+  pacman:
+    name: gnuplot
+    state: present
+
+- name: Install xsv
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name: xsv
+  tags:
+    - aur

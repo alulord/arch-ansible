@@ -1,0 +1,19 @@
+---
+- name: Install sudo
+  pacman: name=sudo state=present
+  tags:
+    - sudo
+
+- name: Add user to wheel group
+  user: name={{ user.name }} groups=wheel append=yes
+  tags:
+    - sudo
+    - user
+
+- name: Add wheel to nopasswd
+  lineinfile:
+    path: /etc/sudoers.d/wheel
+    line:  "%wheel ALL=(ALL) NOPASSWD: ALL"
+    create: yes
+  tags:
+    - sudo

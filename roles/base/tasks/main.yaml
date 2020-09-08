@@ -1,0 +1,37 @@
+---
+- include: locale.yaml
+
+- name: Copy pacman configuration file
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf
+
+- name: Refresh pacman mirrors
+  pacman:
+    update_cache: yes
+
+- name: Install inetutils for hostname
+  pacman:
+    name: inetutils
+    state: present
+
+- name: Set the hostname
+  hostname:
+    name: "{{ hostname }}"
+  when: hostname is defined
+
+- name: Add localhost to hosts
+  lineinfile:
+    path: /etc/hosts
+    line: '127.0.0.1 localhost localhost.localdomain'
+
+- name: Add host to hosts
+  lineinfile:
+    path: /etc/hosts
+    line: '127.0.1.1 {{ hostname }} {{ hostname }}.localdomain'
+
+- include: journal.yaml
+- include: shell.yaml
+- include: packages.yaml
+- include: user.yaml
+- include: sudo.yaml

@@ -1,0 +1,23 @@
+---
+- name: Install i3 packages
+  pacman:
+    name:
+      - picom
+      - dmenu
+      - perl-anyevent-i3
+    state: present
+
+- name: Install i3 aur packages
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name:
+      - i3-gaps-rounded-git
+      - i3-volume
+      - autotiling
+      - rofi-git
+      - polybar
+      - xidlehook
+      - python-fontawesome
+      - todotxt
+    state: present

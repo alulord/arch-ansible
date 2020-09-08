@@ -1,0 +1,46 @@
+---
+- name: Create .ssh dir
+  file:
+    path: /home/{{ user.name }}/.ssh
+    mode: 700
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    state: directory
+  tags:
+    - ssh
+
+- name: Copy ssh keys
+  copy:
+    dest: "/home/{{ user.name }}"
+    src: "{{ ssh_src }}"
+  tags:
+    - ssh
+
+- name: Set .ssh permissions for owner
+  file:
+    path: /home/{{ user.name }}/.ssh
+    mode: u+rw
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    recurse: yes
+  tags:
+    - ssh
+
+- name: Set .ssh permissions for .ssh dir
+  file:
+    path: /home/{{ user.name }}/.ssh
+    mode: +x
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+  tags:
+    - ssh
+
+- name: Remove .ssh permissions for group and others
+  file:
+    path: /home/{{ user.name }}/.ssh
+    mode: go-rwx
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    recurse: yes
+  tags:
+    - ssh

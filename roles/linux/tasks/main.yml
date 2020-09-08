@@ -1,0 +1,10 @@
+---
+- name: Install linux
+  pacman:
+    name:
+      - linux
+      - linux-headers
+      - linux-firmware
+    state: present
+  notify:
+    - rebuild bootloader

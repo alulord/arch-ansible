@@ -1,0 +1,114 @@
+---
+user:
+  name: alulord
+  shell: /usr/bin/zsh
+  uid: 1000
+  group: users
+  log:
+    dir: .log
+    rotate: 8
+  timezone: Europe/Bratislava
+
+dotfiles:
+  url: git@github.com:alulord/arch-dotfiles.git
+  name: .dotfiles.git
+
+bootloader:
+  path: /boot
+  theme_path: refind-theme-regular
+  kernel_parameters:  "initrd=amd-ucode.img libahci.ignore_sss=1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
+
+pacman:
+  base_packages:
+    - alacritty
+    - gptfdisk
+    - firewalld
+    - man-db
+    - man-pages
+    - nano
+    - openssh
+    - pkgfile
+    - python-pip
+    - wget
+    - zsh
+  additional_packages:
+    - atom
+    - filezilla
+    - firefox
+    - gimp
+    - gsimplecal
+    - htop
+    - keepassxc
+    - nemo
+    - nemo-fileroller
+    - nemo-terminal
+    - neofetch
+    - redshift
+    - rsync
+    - transmission-gtk
+    - xclip
+    - steam
+
+aur:
+  packages:
+    - betterlockscreen
+    - ctop
+#    - libpdfium-nojs
+#    - megasync
+#    - nemo-megasync
+#    - spotify
+    - teamviewer
+    - gnome-screenshot
+    - yay
+
+multimedia:
+  packages:
+    - playerctl
+    - a52dec
+    - libmad
+    - libmpeg2
+    - lxappearance
+    - ffmpegthumbnailer
+
+fonts:
+  packages:
+    - terminus-font
+    - gucharmap
+    - ttf-jetbrains-mono
+  aur_packages:
+    - nerd-fonts-inconsolata-go
+
+
+filesystem:
+  packages:
+    - ntfs-3g
+    - btrfs-progs
+    - snapper
+    - snap-pac
+
+x:
+  video_drivers:
+    - nvidia
+    - nvidia-settings
+  middle_click_button: "274"
+  keyboard_model: "pc105"
+
+network:
+  dispatcher: False
+  wireless_packages:
+    - wireless_tools
+    - iw
+    - iwd
+
+gnupg:
+  enable_agent: True
+  emulate_ssh: True
+
+hostsctl:
+  url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+bluetooth:
+  disable: False
+
+journal:
+  max_size: 500M

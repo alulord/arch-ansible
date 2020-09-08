@@ -1,0 +1,24 @@
+---
+- name: Install gtk theme
+  pacman:
+    name: arc-gtk-theme
+    state: present
+
+- name: Copy icon theme
+  synchronize:
+    dest: /usr/share/icons/Green-Maia
+    src: Green-Maia
+  when: not ansible_check_mode
+
+- name: Create background dir
+  file: path=/usr/share/backgrounds state=directory
+
+- name: Copy backround
+  copy:
+    dest: /usr/share/backgrounds/fight.jpg
+    src: fight.jpg
+
+- name: Install multimedia packages
+  pacman:
+    name: "{{ multimedia.packages }}"
+    state: present

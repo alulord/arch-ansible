@@ -1,0 +1,13 @@
+---
+- name: Install hostsctl
+  become: yes
+  become_user: "{{ user.name }}"
+  aur: name=hostsctl
+  tags:
+    - aur
+
+- name: Push hostsctl config
+  template: src=hostsctl.conf.j2 dest=/etc/hostsctl.conf
+
+- name: Update hostsctl
+  command: hostsctl update

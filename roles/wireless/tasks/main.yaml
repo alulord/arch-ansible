@@ -1,0 +1,7 @@
+---
+- name: Install Wireless tools
+  pacman:
+    name: "{{ network.wireless_packages }}"
+    state: present
+  tags:
+    - wireless

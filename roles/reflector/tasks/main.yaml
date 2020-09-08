@@ -1,0 +1,10 @@
+---
+- name: Install reflector
+  pacman:
+    name: reflector
+    state: present
+
+- name: Enable reflector service
+  systemd:
+    name: reflector.timer
+    enabled: yes
