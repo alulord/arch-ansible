@@ -15,6 +15,7 @@
   when: gnupg.enable_agent == True
   environment:
     XDG_RUNTIME_DIR: "/run/user/{{ user.uid }}"
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Enable dirmngr.socket
   systemd:
@@ -27,6 +28,7 @@
   when: gnupg.enable_agent == True
   environment:
     XDG_RUNTIME_DIR: "/run/user/{{ user.uid }}"
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Enable gpg-agent-ssh.socket
   systemd:
@@ -39,3 +41,4 @@
   when: gnupg.enable_agent == True and gnupg.emulate_ssh == True
   environment:
     XDG_RUNTIME_DIR: "/run/user/{{ user.uid }}"
+  ignore_errors: "{{ ansible_check_mode }}"

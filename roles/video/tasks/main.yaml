@@ -1,0 +1,41 @@
+---
+- name: Install nvidia video driver(s)
+  pacman:
+    name:
+      - nvidia
+      - nvidia-utils
+      - nvidia-settings
+    state: present
+  when: '"nvidia" in video_drivers'
+
+
+- name: Install nouveau video driver(s)
+  pacman:
+    name:
+      - mesa
+      - lib32-mesa
+    state: present
+  when: '"nouveau" in video_drivers'
+
+- name: Install amdgpu video driver(s)
+  pacman:
+    name:
+      - mesa
+      - lib32-mesa
+      - vulkan-radeon
+      - lib32-vulkan-radeon
+      - libva-mesa-driver
+      - lib32-libva-mesa-driver
+      - mesa-vdpau
+      - lib32-mesa-vdpau
+    state: present
+  when: '"amdgpu" in video_drivers'
+
+- name: Install amd video driver(s)
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name:
+      - amdgpu-pro-libgl
+      - lib32-amdgpu-pro-libgl
+  when: '"amd" in video_drivers'

@@ -4,11 +4,16 @@
     name:
       - x86_energy_perf_policy
       - ethtool
+      - smartmontools
       - tlp
-      - tlp-rdw
     state: present
-  tags:
-    - tlp
+
+- name: Push TLP btrfs config
+  copy:
+    src: tlp/20-btrfs.conf
+    dest: /etc/tlp.d/
+  notify:
+    - restart tlp
 
 - name: Push TLP battery threshold config
   copy:
@@ -17,7 +22,14 @@
   notify:
     - restart tlp
   tags:
-    - tlp
+    - laptop
+
+- name: Install TLP radio device config
+  pacman: name=tlp-rdw state=present
+  notify:
+    - restart tlp
+  tags:
+    - wireless
 
 - name: Push TLP radio device config
   copy:
@@ -26,7 +38,7 @@
   notify:
     - restart tlp
   tags:
-    - tlp
+    - wireless
 
 - name: Push TLP PCIe config
   copy:
@@ -40,16 +52,14 @@
 - name: Mask systemd radio service
   command: systemctl mask systemd-rfkill.service
   tags:
-    - tlp
+    - wireless
 
 - name: Mask systemd radio socket
   command: systemctl mask systemd-rfkill.socket
   tags:
-    - tlp
+    - wireless
 
 - name: Enable TLP
   service:
     name: tlp.service
     enabled: yes
-  tags:
-    - tlp

@@ -1,7 +1,7 @@
 ---
 - name: Install LibreOffice
   pacman:
-    name: libreoffice-fresh
+    name: libreoffice-still
     state: present
 
 - name: Install enscript

@@ -22,7 +22,6 @@ pacman:
   base_packages:
     - alacritty
     - gptfdisk
-    - firewalld
     - man-db
     - man-pages
     - nano
@@ -43,15 +42,23 @@ pacman:
     - nemo-fileroller
     - nemo-terminal
     - neofetch
-    - redshift
     - rsync
     - transmission-gtk
-    - xclip
     - steam
+    - pacman-contrib
+    - coreutils
+    - moreutils
+    - dateutils
+    - jq
+    - screen
+    - fwupd
+    - phototonic
+    - papirus-icon-theme
+    - gnome-keyring
+    - lm_sensors
 
 aur:
   packages:
-    - betterlockscreen
     - ctop
 #    - libpdfium-nojs
 #    - megasync
@@ -77,7 +84,8 @@ fonts:
     - ttf-jetbrains-mono
   aur_packages:
     - nerd-fonts-inconsolata-go
-
+    - ttf-font-awesome-4
+#    - freetype2-cleartype
 
 filesystem:
   packages:
@@ -86,15 +94,28 @@ filesystem:
     - snapper
     - snap-pac
 
+video_drivers:
+  - nouveau
+  - amdgpu
+
+display_manager:
+notebook:
+desktop_environment: sway
+
+gdm:
+  sound: False
+  font_scaling_factor: 1
+  logo_path: False
+  touchpad:
+    tap_to_click: True
+  accessibility_menu: True
+
 x:
-  video_drivers:
-    - nvidia
-    - nvidia-settings
   middle_click_button: "274"
   keyboard_model: "pc105"
 
 network:
-  dispatcher: False
+  dispatcher: True
   wireless_packages:
     - wireless_tools
     - iw

@@ -63,6 +63,7 @@
   service:
     name: "user@{{ user.uid }}"
     state: started
+    enabled: yes
   notify: stop systemd per-user instance
   tags:
     - user

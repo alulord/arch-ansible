@@ -35,3 +35,4 @@
 - include: packages.yaml
 - include: user.yaml
 - include: sudo.yaml
+- include: xdg.yaml

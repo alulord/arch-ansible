@@ -1,10 +1,9 @@
 ---
-- include: tlp.yml
-
 - name: Copy touchpad configuration file
   copy: src=30-touchpad.conf dest=/etc/X11/xorg.conf.d/30-touchpad.conf
   tags:
     - libinput
+    - x
 
 - name: Copy logind configuration file
   copy: src=logind.conf dest=/etc/systemd/logind.conf
@@ -26,28 +25,8 @@
 - name: Enable and start lowbatt timer
   service: name=lowbatt.timer enabled=yes state=started
 
-- name: Install light
-  pacman: name=light state=present
-
 - name: Install powertop
   pacman: name=powertop state=present
-
-- name: Install powerstat
-  become_user: "{{ user.name }}"
-  become: yes
-  aur: name=powerstat-git
-  tags:
-    - aur
-
-- name: Install cmake for battery-stats
-  pacman: name=cmake state=present
-
-- name: Install battery-stats
-  become_user: "{{ user.name }}"
-  become: yes
-  aur: name=battery-stats-git
-  tags:
-    - aur
 
 - name: Install battop
   become_user: "{{ user.name }}"

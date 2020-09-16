@@ -4,6 +4,7 @@
     name:
       - picom
       - dmenu
+      - dunst
       - perl-anyevent-i3
     state: present
 
@@ -12,6 +13,7 @@
   become_user: "{{ user.name }}"
   aur:
     name:
+      - betterlockscreen
       - i3-gaps-rounded-git
       - i3-volume
       - autotiling

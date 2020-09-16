@@ -11,8 +11,9 @@
     - { role: linux, tags: ['linux'] }
     - { role: filesystems, tags: ['filesystems'] }
     - { role: systemd, tags: ['systemd'] }
-    - { role: wireless, tags: ['wireless'], when: "install_wireless|bool == True" }
+    - { role: wireless, tags: ['wireless'] }
     - { role: networkmanager, tags: ['networkmanager'] }
+    - { role: iptables, tags: ['iptables'] }
     - { role: ntp, tags: ['ntp'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: reflector, tags: ['reflector'] }
@@ -20,13 +21,20 @@
     - { role: hostsctl, tags: ['hostsctl'] }
     - { role: x, tags: ['x'] }
     - { role: cron, tags: ['cron'] }
-    - { role: laptop, tags: ['laptop'], when: "is_laptop|bool == True" }
+    - { role: laptop, tags: ['laptop'] }
+    - { role: tlp, tags: ['tlp'] }
+    - { role: asus, tags: ['asus'], when: "notebook == 'asus'" }
     - { role: ssh, tags: ['ssh'] }
     - { role: multimedia, tags: ['multimedia'] }
-    - { role: lightdm, tags: ['lightdm'] }
+    - { role: video, tags: ['video'] }
+    - { role: cups, tags: ['cups'] }
+    - { role: dconf, tags: ['dconf'], when: "display_manager == 'gdm'" }
+    - { role: gdm, tags: ['gdm'], when: "display_manager == 'gdm'" }
+    - { role: lightdm, tags: ['lightdm'], when: "display_manager == 'lightdm'" }
     - { role: sound, tags: ['sound'] }
-    - { role: bluetooth, tags: ['bluetooth'], when: "install_bluetooth|bool == True" }
-    - { role: i3, tags: ['i3'] }
+    - { role: bluetooth, tags: ['bluetooth'] }
+    - { role: i3, tags: ['i3'], when: "desktop_environment == 'i3'" }
+    - { role: sway, tags: ['sway'], when: "desktop_environment == 'sway'" }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: docker, tags: ['docker'] }
     - { role: packages, tags: ['packages'] }
@@ -48,16 +56,4 @@
     - name: ssh_src
       prompt: "Enter location with ssh keys"
       default: /install/.ssh
-      private: no
-    - name: is_laptop
-      prompt: "Should we install laptop features?"
-      default: true
-      private: no
-    - name: install_bluetooth
-      prompt: "Does the device has bluetooth?"
-      default: true
-      private: no
-    - name: install_wireless
-      prompt: "Does the device has WiFi?"
-      default: true
       private: no

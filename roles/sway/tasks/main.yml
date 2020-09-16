@@ -1,0 +1,57 @@
+---
+- name: Install sway packages
+  pacman:
+    name:
+      - rofi
+      - dmenu
+      - swayidle
+      - waybar
+      - wl-clipboard
+      - sway
+      - xorg-server-xwayland
+      - brightnessctl
+      - mako
+      - grim
+      - slurp
+      - qt5-wayland
+    state: present
+
+- name: Install sway aur packages
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name:
+      - swaylock-effects-git
+      - sway-alttab-bin
+#      - j4-dmenu-desktop
+    state: present
+
+- name: Install brightness controll for laptop
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name: wlr-brightness-git
+  tags:
+    - laptop
+
+- name: Template sway service
+  template:
+    dest: /etc/systemd/system/sway@.service
+    src: sway@.service
+
+- name: Template sway service
+  template:
+    dest: /etc/systemd/system/sway-debug@.service
+    src: sway-debug@.service
+
+- name: Install i3ipc for autorename workspaces script
+  become: yes
+  become_user: "{{ user.name }}"
+  pip:
+    name: i3ipc
+    extra_args: --user
+
+- name: Enable sway service
+  systemd:
+    name: sway@1.service
+    enabled: yes

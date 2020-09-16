@@ -26,10 +26,15 @@
 - name: Install xautomation
   pacman: name=xautomation state=present
 
-- name: Install video driver(s)
-  pacman:
-    name: "{{ x.video_drivers }}"
-    state: present
+- name: Install redshift
+  pacman: name=redshift state=present
+  tags:
+    - redshift
+
+- name: Install xclip
+  pacman: name=xclip state=present
+  tags:
+    - xclip
 
 - name: Add user to video group
   user: name={{ user.name }} groups=video append=yes
@@ -57,4 +62,3 @@
 - include: autorandr.yml
 - include: unclutter.yml
 - include: srandrd.yml
-- include: xdg.yml
