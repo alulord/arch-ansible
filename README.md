@@ -81,3 +81,7 @@ Install some additional packages, which gave trouble:
 * megasync
 * nemo-megasync
 * spotify
+
+## TODO
+
+[] layout switching for sway/waybar

@@ -1,3 +1,9 @@
 [submodule "library/ansible-aur"]
 	path = library/ansible-aur
 	url = https://github.com/kewlfft/ansible-aur.git
+[submodule "library/gsettings"]
+	path = library/gsettings
+	url = https://github.com/jistr/ansible-gsetting.git
+[submodule "library/gsetting"]
+	path = library/gsetting
+	url = https://github.com/jistr/ansible-gsetting.git

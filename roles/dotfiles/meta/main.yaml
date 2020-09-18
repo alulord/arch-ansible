@@ -2,3 +2,4 @@
 dependencies:
   - { role: ssh }
   - { role: packages }
+  - { role: systemd }

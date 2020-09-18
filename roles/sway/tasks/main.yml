@@ -54,4 +54,16 @@
 - name: Enable sway service
   systemd:
     name: sway@1.service
-    enabled: yes
+    enabled: no
+
+- name: Setup GNOME theme
+  gsetting:
+    user: "{{ user.name }}"
+    key: org.gnome.desktop.interface
+    value: "gtk-theme Arc-Dark"
+
+- name: Setup GNOME icon theme
+  gsetting:
+    user: "{{ user.name }}"
+    key: org.gnome.desktop.interface gtk-theme
+    value: "icon-theme Green-Maia"

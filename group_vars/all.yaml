@@ -30,6 +30,7 @@ pacman:
     - python-pip
     - wget
     - zsh
+    - gnome-keyring
   additional_packages:
     - atom
     - filezilla
@@ -54,8 +55,8 @@ pacman:
     - fwupd
     - phototonic
     - papirus-icon-theme
-    - gnome-keyring
     - lm_sensors
+    - seahorse
 
 aur:
   packages:
