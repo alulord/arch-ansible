@@ -34,6 +34,16 @@
   tags:
     - laptop
 
+- name: Create dropin directory for getty service
+  file:
+    path: /etc/systemd/system/getty@tty1.service.d
+    state: directory
+
+- name: Template getty service
+  template:
+    dest: /etc/systemd/system/getty@tty1.service.d/override.conf
+    src: getty
+
 - name: Template sway service
   template:
     dest: /etc/systemd/system/sway@.service
