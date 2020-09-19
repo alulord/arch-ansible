@@ -57,6 +57,7 @@ pacman:
     - papirus-icon-theme
     - lm_sensors
     - seahorse
+    - network-manager-applet
 
 aur:
   packages:
