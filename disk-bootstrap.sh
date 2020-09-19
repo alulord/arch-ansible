@@ -31,9 +31,9 @@ mount -t btrfs -o subvol=root,$o_btrfs LABEL=system /mnt
 mount -t btrfs -o subvol=home,$o_btrfs LABEL=system /mnt/home
 mount -t btrfs -o subvol=snapshots,$o_btrfs LABEL=system /mnt/.snapshots
 mount -o $o LABEL=EFI /mnt/boot
-mount --bind /proc /mnt/proc
-mount --bind /sys /mnt/sys
-mount --bind /dev /mnt/dev
+mount --bind -o $o /proc /mnt/proc
+mount --bind -o $o /sys /mnt/sys
+mount --bind -o $o /dev /mnt/dev
 
 pacstrap /mnt base base-devel git nano ansible
 genfstab -L -p /mnt >> /mnt/etc/fstab
