@@ -44,6 +44,7 @@
     dest: /root/
     src: /home/{{ user.name }}/.oh-my-zsh
     archive: no
+    recursive: yes
 
 - name: Copy zshrc to root
   synchronize:
@@ -57,10 +58,16 @@
     src: /home/{{ user.name }}/.p10k.zsh
     archive: no
 
+- name: Remove aliases link in root
+  file:
+    path: /root/.oh-my-zsh/custom/plugins/aliases
+    state: absent
+
 - name: Copy aliases to root
   synchronize:
     dest: /root/.oh-my-zsh/custom/plugins/
     src: /home/{{ user.name }}/.local/share/scripts/aliases
+    recursive: yes
     archive: no
 
 - name: Remove ssh-keygen from root zshrc

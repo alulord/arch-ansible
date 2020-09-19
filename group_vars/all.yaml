@@ -65,6 +65,7 @@ pacman:
 aur:
   packages:
     - ctop
+    - libpdfium-nojs
     - megasync
     - nemo-megasync
     - spotify
@@ -90,7 +91,7 @@ fonts:
   aur_packages:
     - nerd-fonts-inconsolata-go
     - ttf-font-awesome-4
-    - freetype2-cleartype
+#    - freetype2-cleartype
 
 filesystem:
   packages:
@@ -138,5 +139,3 @@ bluetooth:
 
 journal:
   max_size: 500M
-luks_uuid: 5a93d128-8028-4c0a-a74e-a0fa403b68eb
-root_uuid: 689d728e-0449-475c-8ffe-1afb7569e3e3

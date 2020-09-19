@@ -9,20 +9,27 @@
     bare: yes
     key_file: /home/{{ user.name }}/.ssh/id_rsa
 
-#- name: Checkout dotfiles
-#  become_user: "{{ user.name }}"
-#  become: yes
-#  command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} checkout --force
-
 - name: Checkout dotfiles
   become_user: "{{ user.name }}"
   become: yes
-  git:
-    repo: "{{ dotfiles.url }}"
-    clone: no
-    separate_git_dir: "home/{{ user.name }}/.dotfiles.git"
-    force: yes
-    dest: "/home/{{ user.name }}"
+  command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} checkout --force
+
+- name: Init submodules
+  become_user: "{{ user.name }}"
+  become: yes
+  command:
+    chdir: "/home/{{ user.name }}" 
+    cmd: "git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} submodule update --init"
+
+#- name: Checkout dotfiles
+#  become_user: "{{ user.name }}"
+#  become: yes
+#  git:
+#    repo: "{{ dotfiles.url }}"
+#    clone: no
+#    separate_git_dir: "home/{{ user.name }}/.dotfiles.git"
+#    force: yes
+#    dest: "/home/{{ user.name }}"
 
 - name: Install fontawesome for autorename workspaces script
   become: yes
