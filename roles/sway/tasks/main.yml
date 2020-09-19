@@ -66,16 +66,23 @@
     name: sway@1.service
     enabled: no
 
+- name: Install psutil for dconf
+  become: yes
+  become_user: "{{ user.name }}"
+  pip:
+    name: psutil
+    extra_args: --user
+
 - name: Setup GNOME theme
   become: yes
   become_user: "{{ user.name }}"
   dconf:
-    key: org.gnome.desktop.interface
-    value: "gtk-theme Arc-Dark"
+    key: /org/gnome/desktop/interface/gtk-theme
+    value: "'Arc-Dark'"
 
 - name: Setup GNOME icon theme
   become: yes
   become_user: "{{ user.name }}"
   dconf:
-    key: org.gnome.desktop.interface gtk-theme
-    value: "icon-theme Green-Maia"
+    key: /org/gnome/desktop/interface/icon-theme
+    value: "'Green-Maia'"
