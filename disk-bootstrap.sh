@@ -41,6 +41,7 @@ echo "luks_uuid: $(blkid -t PARTLABEL=cryptsystem -s UUID -o value)" >> /install
 echo "root_uuid: $(blkid -t LABEL=system -s UUID -o value)" >> /install/group_vars/all.yaml
 echo "pts/0" >> /mnt/etc/securetty
 cp -r /install /mnt/
-systemd-nspawn -D /mnt echo "root:toor" | chpasswd
+systemd-nspawn -D /mnt
 systemd-nspawn -bD /mnt
+arch-chroot /mnt
 rm -rf /mnt/install
