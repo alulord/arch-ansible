@@ -43,22 +43,25 @@
   synchronize:
     dest: /root/
     src: /home/{{ user.name }}/.oh-my-zsh
+    archive: no
 
 - name: Copy zshrc to root
   synchronize:
     dest: /root/
     src: /home/{{ user.name }}/.zshrc
+    archive: no
 
 - name: Copy powerlevel to root
   synchronize:
     dest: /root/
     src: /home/{{ user.name }}/.p10k.zsh
-
+    archive: no
 
 - name: Copy aliases to root
   synchronize:
     dest: /root/.oh-my-zsh/custom/plugins/
     src: /home/{{ user.name }}/.local/share/scripts/aliases
+    archive: no
 
 - name: Remove ssh-keygen from root zshrc
   lineinfile:

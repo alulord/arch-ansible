@@ -58,17 +58,20 @@ pacman:
     - lm_sensors
     - seahorse
     - network-manager-applet
+    - glib2
+    - gvfs
+    - archiso
 
 aur:
   packages:
     - ctop
-#    - libpdfium-nojs
-#    - megasync
-#    - nemo-megasync
-#    - spotify
+    - libpdfium-nojs
+    - megasync
+    - nemo-megasync
+    - spotify
     - teamviewer
-    - gnome-screenshot
     - yay
+    - jetbrains-toolbox
 
 multimedia:
   packages:
@@ -78,6 +81,7 @@ multimedia:
     - libmpeg2
     - lxappearance
     - ffmpegthumbnailer
+    - vlc
 
 fonts:
   packages:
@@ -87,7 +91,7 @@ fonts:
   aur_packages:
     - nerd-fonts-inconsolata-go
     - ttf-font-awesome-4
-#    - freetype2-cleartype
+    - freetype2-cleartype
 
 filesystem:
   packages:

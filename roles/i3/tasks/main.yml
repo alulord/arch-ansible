@@ -6,6 +6,7 @@
       - dmenu
       - dunst
       - perl-anyevent-i3
+      - gnome-screenshot
     state: present
 
 - name: Install i3 aur packages

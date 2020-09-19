@@ -32,6 +32,9 @@
     dest: /etc/fonts/conf.d/10-hinting-slight.conf
     state: link
 
+- name: Import freetype2-cleartype gpg key
+  command: gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
+
 - name: Install font packages
   pacman:
     name: "{{ fonts.packages }}"

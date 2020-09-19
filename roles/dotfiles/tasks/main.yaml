@@ -5,25 +5,24 @@
   git:
     repo: "{{ dotfiles.url }}"
     dest: /home/{{ user.name }}/.dotfiles.git
+    recursive: yes
     bare: yes
     key_file: /home/{{ user.name }}/.ssh/id_rsa
+
+#- name: Checkout dotfiles
+#  become_user: "{{ user.name }}"
+#  become: yes
+#  command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} checkout --force
 
 - name: Checkout dotfiles
   become_user: "{{ user.name }}"
   become: yes
-  command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} checkout --force
-
-#- name: Update dotfiles submodules
-#  become_user: "{{ user.name }}"
-#  become: yes
-#  command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} submodule --init update
-#  tags:
-#    - dotfiles
-
-#- name: Update betterlockscreen cache
-#  become: yes
-#  become_user: "{{ user.name }}"
-#  command: betterlockscreen -u .local/share/backgrounds/fight.jpg
+  git:
+    repo: "{{ dotfiles.url }}"
+    clone: no
+    separate_git_dir: "home/{{ user.name }}/.dotfiles.git"
+    force: yes
+    dest: "/home/{{ user.name }}"
 
 - name: Install fontawesome for autorename workspaces script
   become: yes
