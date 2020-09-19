@@ -44,5 +44,6 @@ echo "pts/0" >> /mnt/etc/securetty
 cp -r /install /mnt/
 systemd-nspawn -D /mnt
 systemd-nspawn --bind /sys/firmware/efi/efivars -bD /mnt
+arch-chroot /mnt
 #rm -rf /mnt/install
 echo "All done, reboot system"
