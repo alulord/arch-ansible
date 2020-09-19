@@ -65,7 +65,6 @@ pacman:
 aur:
   packages:
     - ctop
-    - libpdfium-nojs
     - megasync
     - nemo-megasync
     - spotify
