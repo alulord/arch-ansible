@@ -86,3 +86,10 @@
   dconf:
     key: /org/gnome/desktop/interface/icon-theme
     value: "'Green-Maia'"
+
+- name: Setup GNOME cursor theme
+  become: yes
+  become_user: "{{ user.name }}"
+  dconf:
+    key: /org/gnome/desktop/interface/cursor-theme
+    value: "'Volantes Cursors'"
