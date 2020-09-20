@@ -6,13 +6,13 @@
 
 - name: Copy icon theme
   synchronize:
-    dest: /usr/share/icons/Green-Maia
+    dest: /usr/share/icons
     src: Green-Maia
   when: not ansible_check_mode
 
 - name: Copy cursor theme
   synchronize:
-    dest: /usr/share/icons/Volantes-Cursors
+    dest: /usr/share/icons
     src: Volantes-Cursors
   when: not ansible_check_mode
 
