@@ -109,4 +109,4 @@
       allowed=true
       system=false
       users=
-    when: g.stat.exists
+  when: g.stat.exists
