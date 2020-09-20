@@ -14,6 +14,8 @@
       - grim
       - slurp
       - qt5-wayland
+      - gammastep
+      - xsettingsd
     state: present
 
 - name: Install sway aur packages
@@ -92,4 +94,19 @@
   become_user: "{{ user.name }}"
   dconf:
     key: /org/gnome/desktop/interface/cursor-theme
-    value: "'Volantes Cursors'"
+    value: "'Volantes-Cursors'"
+
+- name: Check geoclue config file exists.
+  stat:
+    path: /etc/geoclue/geoclue.conf
+  register: g
+
+- name: Add gammastep to geoclue config
+  blockinfile:
+    path: /etc/geoclue/geoclue.conf
+    block: |
+      [gammastep]
+      allowed=true
+      system=false
+      users=
+    when: g.stat.exists

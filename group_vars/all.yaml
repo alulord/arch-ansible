@@ -61,6 +61,7 @@ pacman:
     - glib2
     - gvfs
     - archiso
+    - gnome-calculator
 
 aur:
   packages:
@@ -91,7 +92,6 @@ fonts:
   aur_packages:
     - nerd-fonts-inconsolata-go
     - ttf-font-awesome-4
-#    - freetype2-cleartype
 
 filesystem:
   packages:

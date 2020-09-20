@@ -10,6 +10,12 @@
     src: Green-Maia
   when: not ansible_check_mode
 
+- name: Copy cursor theme
+  synchronize:
+    dest: /usr/share/icons/Volantes-Cursors
+    src: Volantes-Cursors
+  when: not ansible_check_mode
+
 - name: Create background dir
   file: path=/usr/share/backgrounds state=directory
 
