@@ -72,7 +72,8 @@ aur:
     - spotify
     - teamviewer
     - yay
-    - jetbrains-toolbox
+    - phpstorm
+    - phpstorm-url-handler
 
 multimedia:
   packages:
