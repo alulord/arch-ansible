@@ -62,6 +62,7 @@ pacman:
     - gvfs
     - archiso
     - gnome-calculator
+    - nmap
 
 aur:
   packages:
