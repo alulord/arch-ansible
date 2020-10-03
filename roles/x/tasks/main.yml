@@ -26,11 +26,6 @@
 - name: Install xautomation
   pacman: name=xautomation state=present
 
-- name: Install redshift
-  pacman: name=redshift state=present
-  tags:
-    - redshift
-
 - name: Install xclip
   pacman: name=xclip state=present
   tags:
@@ -60,5 +55,6 @@
     - libinput
 
 - include: autorandr.yml
+- include: autocutsel.yml
 - include: unclutter.yml
 - include: srandrd.yml

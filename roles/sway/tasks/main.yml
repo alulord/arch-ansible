@@ -33,8 +33,6 @@
   become_user: "{{ user.name }}"
   aur:
     name: wlr-brightness-git
-  tags:
-    - laptop
 
 - name: Create dropin directory for getty service
   file:

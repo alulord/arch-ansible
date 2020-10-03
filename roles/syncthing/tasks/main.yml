@@ -1,0 +1,16 @@
+---
+- name: Install syncthing
+  pacman: name=syncthing state=present
+
+- name: Copy syncthing service to user dir
+  copy:
+    src: /lib/systemd/user/syncthing.service
+    dest: "/home/{{ user.name }}/.config/systemd/user/"
+
+- name: Start syncthing servcie as user
+  become: yes
+  become_user: "{{ user.name }}"
+  systemd:
+    user: yes
+    name: syncthing.service
+    enabled: yes

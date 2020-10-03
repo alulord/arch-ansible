@@ -1,0 +1,33 @@
+---
+- name: Install Okular
+  pacman:
+    name: okular
+    state: present
+  tags:
+    - okular
+
+- name: Install Zathura and dependencies
+  pacman:
+    name:
+      - zathura-pdf-mupdf
+      - zathura-ps
+    state: present
+  tags:
+    - zathura
+
+- name: Set Zathura as default PDF viewer
+  lineinfile:
+    dest: /etc/xdg/mimeapps.list
+    regexp: "^application/pdf"
+    state: present
+    line: "application/pdf=org.pwmt.zathura-pdf-mupdf.desktop"
+  tags:
+    - zathura
+
+- name: Install pdfgrep
+  pacman:
+    name: pdfgrep
+    state: present
+  tags:
+    - pdfgrep
+

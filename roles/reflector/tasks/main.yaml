@@ -8,3 +8,13 @@
   systemd:
     name: reflector.timer
     enabled: yes
+
+- name: Push pacman mirror list update hook
+  copy:
+    src: mirrorlist.hook
+    dest: /etc/pacman.d/hooks/mirrorlist.hook
+
+- name: Push reflector config
+  copy:
+    src: reflector.conf
+    dest: /etc/xdg/reflector/reflector.conf

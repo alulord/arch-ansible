@@ -1,0 +1,15 @@
+---
+- name: Install localtime
+  become: yes
+  become_user: "{{ user.name }}"
+  aur: name=localtime-git
+  tags:
+    - aur
+
+- name: Enable localtime service
+  systemd:
+    name: localtime.service
+    enabled: yes
+    state: started
+  notify:
+    - reload systemd config

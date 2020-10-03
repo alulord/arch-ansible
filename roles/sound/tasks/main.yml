@@ -25,6 +25,11 @@
   tags:
     - aur
 
+- name: Install pasystray
+  pacman:
+    name: pasystray
+    state: present
+
 - name: Add user to audio group
   user: name={{ user.name }} groups=audio append=yes
   tags:

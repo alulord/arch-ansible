@@ -3,7 +3,6 @@
   copy: src=30-touchpad.conf dest=/etc/X11/xorg.conf.d/30-touchpad.conf
   tags:
     - libinput
-    - x
 
 - name: Copy logind configuration file
   copy: src=logind.conf dest=/etc/systemd/logind.conf

@@ -1,0 +1,12 @@
+---
+- name: Install redshift
+  pacman: name=redshift state=present
+
+- name: Allow RedShift to access geoclue
+  blockinfile:
+    dest: /etc/geoclue/geoclue.conf
+    block: |
+      [redshift]
+      allowed=true
+      system=false
+      users=

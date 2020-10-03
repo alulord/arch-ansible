@@ -34,10 +34,25 @@
     path: /etc/hosts
     line: '127.0.0.1 localhost localhost.localdomain'
 
+- name: Add ipv6 localhost to hosts
+  lineinfile:
+    path: /etc/hosts
+    line: '::1 localhost localhost.localdomain'
+
 - name: Add host to hosts
   lineinfile:
     path: /etc/hosts
     line: '127.0.1.1 {{ hostname }} {{ hostname }}.localdomain'
+  when: hostname is defined
+
+- name: Add additional hosts
+  blockinfile:
+    path: /etc/hosts
+    block: "{{ hosts.additional_hosts }}"
+  when: hosts.additional_hosts is defined
+
+- name: Install gnome-keyring
+  pacman: name=gnome-keyring state=present
 
 - include: journal.yaml
 - include: shell.yaml

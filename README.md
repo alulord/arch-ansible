@@ -32,7 +32,7 @@ Navigate to `/install` and set up disks with following command (and follow promp
 ./disk-bootstrap.sh /dev/sdX
 ```
 
-Once installed you will be in `systemd-nspawn` system. Right now `chpasswd` is not working so we have to set up password manually. Press `Ctrl+]` 3 times to quit `systemd-nspawn`. Once out run following commands to get to correct nspawn container:
+Once installed you will be in `systemd-nspawn` system. Right now `chpasswd` is not working, so we have to set up password manually. Press `Ctrl+]` 3 times to quit `systemd-nspawn`. Once out run following commands to get to correct nspawn container:
 
 ```bash
 systemd-nspawn -D /mnt
@@ -41,11 +41,18 @@ logout
 systemd-nspawn -bD /mnt
 ``` 
 
-Once inside navigate to `/install` and run ansible playbook e.g
+Once inside navigate to `/install` and run ansible playbook. By default, `basic` tags will run only basic installation without gui. You can further modify the installation with supported tags `x,wireless,laptop,tlp,asus,bluetooth,i3,sway,logitech,redshift,syncthing` e.g
 
 ```bash
-ansible-playbook playbook.yaml --extra-vars="motebook=asus" --skip-tags="x"
+ansible-playbook playbook.yaml  --tags all,x,wireless,i3,redshift
 ```
+
+or just for cli install
+
+```bash
+ansible-playbook playbook.yaml  --tags basic
+```
+
 
 This will bootstrap installation with dotfiles and necessary configs. If it is done, you can `poweroff` nspawn container.
 

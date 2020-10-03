@@ -4,45 +4,56 @@
 #  tasks:
 #    - debug: var=ansible_facts
   roles:
-    - { role: base, tags: ['base'] }
-    - { role: packages, tags: ['packages'] }
-    - { role: amd-microcode, tags: ['amd-microcode'], when: "'AuthenticAMD' in ansible_processor" }
-    - { role: bootloader, tags: ['bootloader'] }
-    - { role: linux, tags: ['linux'] }
-    - { role: filesystems, tags: ['filesystems'] }
-    - { role: systemd, tags: ['systemd'] }
-    - { role: wireless, tags: ['wireless'] }
+    - { role: base, tags: ['base', 'basic'] }
+    - { role: amd-microcode, tags: ['amd-microcode', 'basic'], when: "'AuthenticAMD' in ansible_processor" }
+    - { role: bootloader, tags: ['bootloader', 'basic'] }
+    - { role: linux, tags: ['linux', 'basic'] }
+    - { role: filesystems, tags: ['filesystems', 'basic'] }
+    - { role: systemd, tags: ['systemd', 'basic'] }
+    - { role: wireless, tags: ['never', 'wireless']  }
     - { role: networkmanager, tags: ['networkmanager'] }
-    - { role: iptables, tags: ['iptables'] }
-    - { role: ntp, tags: ['ntp'] }
-    - { role: fonts, tags: ['fonts'] }
-    - { role: reflector, tags: ['reflector'] }
-    - { role: gnupg, tags: ['gnupg'] }
-    - { role: hostsctl, tags: ['hostsctl'] }
-    - { role: x, tags: ['x'] }
-    - { role: cron, tags: ['cron'] }
-    - { role: laptop, tags: ['laptop'] }
-    - { role: tlp, tags: ['tlp'] }
-    - { role: asus, tags: ['asus'], when: "notebook == 'asus'" }
-    - { role: ssh, tags: ['ssh'] }
-    - { role: multimedia, tags: ['multimedia'] }
-    - { role: video, tags: ['video'] }
-    - { role: cups, tags: ['cups'] }
-    - { role: dconf, tags: ['dconf'], when: "display_manager == 'gdm'" }
-    - { role: gdm, tags: ['gdm'], when: "display_manager == 'gdm'" }
-    - { role: lightdm, tags: ['lightdm'], when: "display_manager == 'lightdm'" }
-    - { role: sound, tags: ['sound'] }
-    - { role: bluetooth, tags: ['bluetooth'] }
-    - { role: i3, tags: ['i3'], when: "desktop_environment == 'i3'" }
-    - { role: sway, tags: ['sway'], when: "desktop_environment == 'sway'" }
-    - { role: dotfiles, tags: ['dotfiles'] }
-    - { role: docker, tags: ['docker'] }
-    - { role: packages, tags: ['packages'] }
-    - { role: archive, tags: ['archive'] }
-    - { role: nettools, tags: ['nettools'] }
-    - { role: vpn, tags: ['vpn'] }
-    - { role: clipboard, tags: ['clipboard'] }
-    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: iptables, tags: ['iptables', 'basic'] }
+    - { role: ntp, tags: ['ntp', 'basic'] }
+    - { role: fonts, tags: ['fonts', 'basic'] }
+    - { role: reflector, tags: ['reflector', 'basic'] }
+    - { role: gnupg, tags: ['gnupg', 'basic'] }
+    - { role: hostsctl, tags: ['hostsctl', 'basic'] }
+    - { role: x, tags: ['never', 'x'] }
+    - { role: cron, tags: ['cron', 'basic'] }
+    - { role: laptop, tags: ['never', 'laptop'] }
+    - { role: tlp, tags: ['never', 'tlp'] }
+    - { role: asus, tags: ['never', 'asus'] }
+    - { role: ssh, tags: ['ssh', 'basic'] }
+    - { role: multimedia, tags: ['multimedia', 'basic'] }
+    - { role: video, tags: ['video', 'basic'] }
+    - { role: cups, tags: ['cups', 'basic'] }
+    - { role: dconf, tags: ['dconf', 'basic'], when: "display_manager == 'gdm'" }
+    - { role: gdm, tags: ['gdm', 'basic'], when: "display_manager == 'gdm'" }
+    - { role: lightdm, tags: ['lightdm', 'basic'], when: "display_manager == 'lightdm'" }
+    - { role: sound, tags: ['sound', 'basic'] }
+    - { role: bluetooth, tags: ['never', 'bluetooth'] }
+    - { role: i3, tags: ['never', 'i3'] }
+    - { role: sway, tags: ['never', 'sway'] }
+    - { role: dotfiles, tags: ['dotfiles', 'basic'] }
+    - { role: docker, tags: ['docker', 'basic'] }
+    - { role: packages, tags: ['packages', 'gui'] }
+    - { role: archive, tags: ['archive', 'basic'] }
+    - { role: nettools, tags: ['nettools', 'basic'] }
+    - { role: localtime, tags: ['localtime', 'basic'] }
+    - { role: logitech, tags: ['never', 'logitech'] }
+    - { role: macchiato, tags: ['macchiato', 'basic'] }
+    - { role: pdf, tags: ['pdf', 'gui'] }
+    - { role: vpn, tags: ['vpn', 'basic'] }
+    - { role: ssd, tags: ['ssd', 'basic'] }
+    - { role: redshift, tags: ['never', 'redshift'] }
+    - { role: spell, tags: [ 'spell', 'basic'] }
+    - { role: sysmon, tags: [ 'sysmon', 'basic'] }
+    - { role: udisks, tags: [ 'udisks', 'basic'] }
+    - { role: wormhole, tags: [ 'wormhole', 'basic'] }
+    - { role: clipboard, tags: ['clipboard', 'gui'] }
+    - { role: syncthing, tags: ['never', 'syncthing'] }
+    - { role: jetbrains, tags: ['jetbrains', 'gui'] }
+    - { role: virtualbox, tags: ['virtualbox', 'gui'] }
 
   vars_prompt:
     - name: user_password

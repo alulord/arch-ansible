@@ -4,6 +4,7 @@
     name:
       - networkmanager
       - networkmanager-openvpn
+      - network-manager-applet
     state: present
 
 - name: Enable and start NetworkManager

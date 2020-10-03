@@ -6,15 +6,13 @@
     owner: "{{ user.name }}"
     group: "{{ user.group }}"
     state: directory
-  tags:
-    - ssh
+
 
 - name: Copy ssh keys
   copy:
     dest: "/home/{{ user.name }}"
     src: "{{ ssh_src }}"
-  tags:
-    - ssh
+
 
 - name: Set .ssh permissions for owner
   file:
@@ -23,8 +21,7 @@
     owner: "{{ user.name }}"
     group: "{{ user.group }}"
     recurse: yes
-  tags:
-    - ssh
+
 
 - name: Set .ssh permissions for .ssh dir
   file:
@@ -32,8 +29,7 @@
     mode: +x
     owner: "{{ user.name }}"
     group: "{{ user.group }}"
-  tags:
-    - ssh
+
 
 - name: Remove .ssh permissions for group and others
   file:
@@ -42,5 +38,14 @@
     owner: "{{ user.name }}"
     group: "{{ user.group }}"
     recurse: yes
-  tags:
-    - ssh
+
+- name: Install keychain
+  pacman: name=keychain state=present
+
+- name: Install x11-ask-pass
+  pacman: name=x11-ssh-askpass state=present
+
+- name: Export SSH_ASKPASS environment variable
+  lineinfile: dest=/etc/profile
+              state=present
+              line="export SSH_ASKPASS=\"/usr/lib/ssh/x11-ssh-askpass\""
