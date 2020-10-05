@@ -43,7 +43,7 @@
     - { role: logitech, tags: ['never', 'logitech'] }
     - { role: macchiato, tags: ['macchiato', 'basic'] }
     - { role: pdf, tags: ['pdf', 'gui'] }
-    - { role: vpn, tags: ['vpn', 'basic'] }
+    - { role: vpn, tags: ['never', 'vpn'] }
     - { role: ssd, tags: ['ssd', 'basic'] }
     - { role: redshift, tags: ['never', 'redshift'] }
     - { role: spell, tags: [ 'spell', 'basic'] }

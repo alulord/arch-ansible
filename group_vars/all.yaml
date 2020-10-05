@@ -19,6 +19,10 @@ bootloader:
   kernel_parameters:  "initrd=amd-ucode.img libahci.ignore_sss=1 quiet splash loglevel=3 rd.udev.log_priority=3 vt.global_cursor_default=0"
 
 pacman:
+  linux_kernel:
+    - linux
+    - linux-headers
+    - linux-firmware
   base_packages:
     - alacritty
     - gptfdisk
@@ -30,7 +34,8 @@ pacman:
     - python-pip
     - wget
     - zsh
-
+    - python-keyring
+    - python-secretstorage
   additional_packages:
     - atom
     - filezilla
@@ -62,6 +67,7 @@ pacman:
     - gnome-calculator
     - nmap
     - okular
+    - udiskie
 
 aur:
   packages:
@@ -73,6 +79,7 @@ aur:
     - teamviewer
     - yay
     - mailspring-libre
+    - polybar-spotify-module
 
 multimedia:
   packages:

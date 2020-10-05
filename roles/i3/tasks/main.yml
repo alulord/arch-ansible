@@ -23,6 +23,7 @@
       - xidlehook
       - python-fontawesome
       - todotxt
+      - i3exit
     state: present
 
 - name: Verify that default applications file exists

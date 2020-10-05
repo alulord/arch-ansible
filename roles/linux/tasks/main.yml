@@ -1,10 +1,7 @@
 ---
 - name: Install linux
   pacman:
-    name:
-      - linux
-      - linux-headers
-      - linux-firmware
+    name: "{{ pacman.linux_kernel }}"
     state: present
   notify:
     - rebuild bootloader
