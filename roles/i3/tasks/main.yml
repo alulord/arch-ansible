@@ -36,6 +36,9 @@
               line='[Default Applications]'
               insertbefore=BOF
 
+- name: Create directory for betterlockscreen drop-in service
+  file: path=/etc/systemd/system/betterlockscreen@{{ user.name }}.d state=directory
+
 - name: Override betterlockscreen service
   template:
     src: "betterlockscreen@.service"
