@@ -30,6 +30,7 @@
     - { role: dconf, tags: ['dconf', 'basic'], when: "display_manager == 'gdm'" }
     - { role: gdm, tags: ['gdm', 'basic'], when: "display_manager == 'gdm'" }
     - { role: lightdm, tags: ['lightdm', 'basic'], when: "display_manager == 'lightdm'" }
+    - { role: no-dm, tags: ['no-dm', 'basic'], when: "display_manager == ''" }
     - { role: sound, tags: ['sound', 'basic'] }
     - { role: bluetooth, tags: ['never', 'bluetooth'] }
     - { role: i3, tags: ['never', 'i3'] }

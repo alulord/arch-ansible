@@ -6,7 +6,7 @@
   become: yes
   become_user: "{{ user.name }}"
   systemd:
-    name=redshift-gtk.service
+    name: redshift-gtk.service
     scope: user
     enabled: yes
     state: started
