@@ -4,6 +4,7 @@
     name:
       - dmenu
       - dunst
+      - betterlockscreen
       - perl-anyevent-i3
       - gnome-screenshot
       - python-pywal
@@ -15,7 +16,6 @@
   aur:
     name:
       - picom-git
-      - betterlockscreen-git
       - i3-gaps-rounded-git
       - i3-volume
       - autotiling

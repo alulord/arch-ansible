@@ -118,10 +118,12 @@ filesystem:
     - snap-pac
 
 video_drivers:
-#  - nouveau
-  - amdgpu
+  - nouveau
+  - nvidia
+#  - amdgpu
 
-display_manager: #gdm,lightdm
+#gdm,lightdm, or empty for none
+display_manager:
 
 gdm:
   sound: False
