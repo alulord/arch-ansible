@@ -14,13 +14,6 @@
   become: yes
   command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} checkout --force
 
-- name: Init submodules
-  become_user: "{{ user.name }}"
-  become: yes
-  command:
-    chdir: "/home/{{ user.name }}" 
-    cmd: "git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} submodule update --init"
-
 #- name: Checkout dotfiles
 #  become_user: "{{ user.name }}"
 #  become: yes
@@ -43,5 +36,11 @@
     path: /home/{{ user.name }}/README.md
     state: absent
 
-
+- name: Checkout nmcli-rofi
+  become_user: "{{ user.name }}"
+  become: yes
+  git:
+    dest: "/home/{{ user.name }}/.config/polybar/scripts/nmcli-rofi"
+    repo: "https://github.com/sinetoami/nmcli-rofi.git"
+-
 - include: zsh.yaml

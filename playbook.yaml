@@ -59,11 +59,9 @@
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
-      default: test
-#      confirm: yes
+      confirm: yes
     - name: hostname
       prompt: "Enter desired hostname"
-      default: aluwork
       private: no
     - name: ssh_src
       prompt: "Enter location with ssh keys"

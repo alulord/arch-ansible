@@ -44,7 +44,7 @@ systemd-nspawn -bD /mnt
 Once inside navigate to `/install` and run ansible playbook. By default, `basic` tags will run only basic installation without gui. You can further modify the installation with supported tags `x,wireless,laptop,tlp,asus,bluetooth,i3,sway,logitech,redshift,syncthing,vpn` e.g
 
 ```bash
-ansible-playbook playbook.yaml  --tags all,x,wireless,i3,redshift
+ansible-playbook playbook.yaml  --tags all,x,wireless,i3,redshift,syncthing,vpn
 ```
 
 or just for cli install

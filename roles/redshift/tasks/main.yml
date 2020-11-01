@@ -9,7 +9,6 @@
     name: redshift-gtk.service
     scope: user
     enabled: yes
-    state: started
 
 - name: Allow RedShift to access geoclue
   blockinfile:

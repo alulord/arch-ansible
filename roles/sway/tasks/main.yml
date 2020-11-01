@@ -103,3 +103,11 @@
       system=false
       users=
   when: g.stat.exists
+
+- name: Add waybar base16 theme
+  become: yes
+  become_user: "{{ user.name }}"
+  git:
+    dest: "/home/{{ user.name }}/.config/waybar/base16-waybar"
+    repo: https://github.com/mnussbaum/base16-waybar.git
+    depth: 1

@@ -2,7 +2,6 @@
 - name: Install i3 packages
   pacman:
     name:
-      - picom
       - dmenu
       - dunst
       - perl-anyevent-i3
@@ -15,7 +14,8 @@
   become_user: "{{ user.name }}"
   aur:
     name:
-      - betterlockscreen
+      - picom-git
+      - betterlockscreen-git
       - i3-gaps-rounded-git
       - i3-volume
       - autotiling
@@ -25,6 +25,7 @@
       - python-fontawesome
       - todotxt
       - i3exit
+      - i3gopher
     state: present
 
 - name: Verify that default applications file exists
