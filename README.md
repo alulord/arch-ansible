@@ -29,16 +29,14 @@ cp -r /media/location/.ssh /install
 Navigate to `/install` and set up disks with following command (and follow prompts) 
 
 ```bash
-./disk-bootstrap.sh /dev/sdX
+./disk-bootstrap.sh /dev/sdX 
 ```
 
-Once installed you will be in `systemd-nspawn` system. Right now `chpasswd` is not working, so we have to set up password manually. Press `Ctrl+]` 3 times to quit `systemd-nspawn`. Once out run following commands to get to correct nspawn container:
+Once installed you will be in `systemd-nspawn` system. Right now `chpasswd` is not working, so we have to set up password manually. Run following commands to get to correct nspawn container:
 
 ```bash
-systemd-nspawn -D /mnt
 passwd
 logout
-systemd-nspawn -bD /mnt
 ``` 
 
 Once inside navigate to `/install` and run ansible playbook. By default, `basic` tags will run only basic installation without gui. You can further modify the installation with supported tags `x,wireless,laptop,tlp,asus,bluetooth,i3,sway,logitech,redshift,syncthing,vpn` e.g
@@ -59,7 +57,6 @@ This will bootstrap installation with dotfiles and necessary configs. If it is d
 We have to regenerate bootstrap (we don't have `/sys` or `/proc` mounted)
 
 ```bash
-arch-chroot /mnt
 refind-install
 ```
 
@@ -67,28 +64,20 @@ After this you can reboot into system a finish installation
 
 ### Finishing installation
 
-There are some packages which for now were problematic to install via ansible.
-
 If needed connect to wifi using
 
 ```bash
 nmcli d wifi c name_of_network password SecretPassword
 ```
 
-Navigate to home dir and init dotfiles submodules
+To [check iptables dropped packets](https://wiki.archlinux.org/index.php/iptables#Logging) use
 
+```bash
+journalctl -k | grep "IN=.*OUT=.*" | less
 ```
-dotfiles submodule update --init
-```
-
-Install some additional packages, which gave trouble:
-
-* freetype2-cleartype
-* libpdfium-nojs
-* megasync
-* nemo-megasync
-* spotify
 
 ## TODO
 
-[] layout switching for sway/waybar
+[] keyboard layout switching for sway/waybar
+[] use firejail for applications like browsers https://github.com/pigmonkey/spark/tree/master/roles/firejail
+[] use nmtrust so applications can connect only on trusted networks https://github.com/pigmonkey/spark/tree/master/roles/nmtrust

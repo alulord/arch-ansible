@@ -7,9 +7,9 @@
       - phpstorm
       - phpstorm-url-handler
 
-- name: Install jetbrains-jre
-  become: yes
-  become_user: "{{ user.name }}"
-  aur:
-    name:
-      - jetbrains-jre
+#- name: Install jetbrains-jre
+#  become: yes
+#  become_user: "{{ user.name }}"
+#  aur:
+#    name:
+#      - jetbrains-jre
