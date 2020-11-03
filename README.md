@@ -1,6 +1,6 @@
 # Ansible playbook to bootstrap Arch linux
 
-Contains `disk-bootstrap.sh` which will partition given disk, encrypt and bootstrap btrfs with snapshots. After that it will run
+This is ansible playbook to help with Arch linux installation. Contains `disk-bootstrap.sh` which will partition given disk, encrypt and bootstrap btrfs with snapshots. After that you can run this ansible playbook to install Arch linux ready to use.
 
 Should add .ssh folder with keys to download dotfiles
 
