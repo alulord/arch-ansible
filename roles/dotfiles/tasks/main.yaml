@@ -14,16 +14,6 @@
   become: yes
   command: git --git-dir=/home/{{ user.name }}/.dotfiles.git --work-tree=/home/{{ user.name }} checkout --force
 
-#- name: Checkout dotfiles
-#  become_user: "{{ user.name }}"
-#  become: yes
-#  git:
-#    repo: "{{ dotfiles.url }}"
-#    clone: no
-#    separate_git_dir: "home/{{ user.name }}/.dotfiles.git"
-#    force: yes
-#    dest: "/home/{{ user.name }}"
-
 - name: Install fontawesome for autorename workspaces script
   become: yes
   become_user: "{{ user.name }}"
@@ -36,11 +26,14 @@
     path: /home/{{ user.name }}/README.md
     state: absent
 
-- name: Checkout nmcli-rofi
+- name: Creates directory for runable scripts
   become_user: "{{ user.name }}"
   become: yes
-  git:
-    dest: "/home/{{ user.name }}/.config/polybar/scripts/nmcli-rofi"
-    repo: "https://github.com/sinetoami/nmcli-rofi.git"
--
+  file:
+    path: "/home/{{ user.name }}/.local/bin"
+    state: directory
+    mode: 0775
+    recurse: yes
+
 - include: zsh.yaml
+- include: bitwarden.yaml

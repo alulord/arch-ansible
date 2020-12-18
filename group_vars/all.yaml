@@ -39,6 +39,7 @@ pacman:
     - jre-openjdk
   additional_packages:
     - atom
+    - leafpad
     - filezilla
     - firefox
     - gimp
@@ -69,17 +70,21 @@ pacman:
     - nmap
     - okular
     - udiskie
+    - xclip
 
 aur:
   packages:
     - ctop
     - libpdfium-nojs
-    - megasync
+    - megasync-bin
     - nemo-megasync
 #    - spotify
     - teamviewer
     - yay
     - mailspring-libre
+    - recapp-git
+    - bitwarden-bin
+    - bitwarden-cli-bin
 
 multimedia:
   packages:
@@ -101,10 +106,11 @@ fonts:
     - noto-fonts-emoji
     - gucharmap
   aur_packages:
-    - nerd-fonts-inconsolata-go
+    - nerd-fonts-fira-code
     - nerd-fonts-jetbrains-mono
     - terminus-font-ttf
     - ttf-font-awesome-4
+    - ttf-weather-icons
 
 
 udisks:

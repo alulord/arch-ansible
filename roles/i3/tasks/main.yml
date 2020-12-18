@@ -8,6 +8,8 @@
       - perl-anyevent-i3
       - gnome-screenshot
       - python-pywal
+      - picom
+      - i3-gaps
     state: present
 
 - name: Install i3 aur packages
@@ -15,8 +17,6 @@
   become_user: "{{ user.name }}"
   aur:
     name:
-      - picom-git
-      - i3-gaps-rounded-git
       - i3-volume
       - autotiling
       - rofi-git
@@ -24,8 +24,8 @@
       - xidlehook
       - python-fontawesome
       - todotxt
-      - i3exit
       - i3gopher
+      - i3icons2-git
     state: present
 
 - name: Verify that default applications file exists

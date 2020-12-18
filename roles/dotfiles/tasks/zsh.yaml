@@ -6,13 +6,27 @@
 
 - name: Copy zshrc to root
   synchronize:
-    dest: /root/
-    src: /home/{{ user.name }}/.zshrc
+    dest: "/root/"
+    src: "/home/{{ user.name }}/.zshrc"
     archive: no
 
 - name: Copy powerlevel to root
   synchronize:
-    dest: /root/
-    src: /home/{{ user.name }}/.p10k.zsh
+    dest: "/root/"
+    src: "/home/{{ user.name }}/.p10k.zsh"
+    archive: no
+
+- name: Creates directory for aliases
+  become_user: "{{ user.name }}"
+  become: yes
+  file:
+    path: "/root/.local/share/scripts/aliases"
+    state: directory
+    mode: 0775
+
+- name: Copy aliases to root
+  synchronize:
+    dest: "/root/.local/share/scripts/aliases/aliases.plugin.zsh"
+    src: "/home/{{ user.name }}/.local/share/scripts/aliases/aliases.plugin.zsh"
     archive: no
 
