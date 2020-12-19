@@ -76,8 +76,6 @@ aur:
   packages:
     - ctop
     - libpdfium-nojs
-    - megasync-bin
-    - nemo-megasync
 #    - spotify
     - teamviewer
     - yay

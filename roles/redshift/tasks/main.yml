@@ -2,14 +2,6 @@
 - name: Install redshift
   pacman: name=redshift state=present
 
-- name: Enable redshift-gtk
-  become: yes
-  become_user: "{{ user.name }}"
-  systemd:
-    name: redshift-gtk.service
-    scope: user
-    enabled: yes
-
 - name: Allow RedShift to access geoclue
   blockinfile:
     dest: /etc/geoclue/geoclue.conf
