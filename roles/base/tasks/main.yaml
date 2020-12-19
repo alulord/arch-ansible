@@ -54,6 +54,12 @@
 - name: Install gnome-keyring
   pacman: name=gnome-keyring state=present
 
+- name: set inotify limit higher
+  lineinfile:
+    path: /etc/sysctl.d/90-inotify.conf
+    line: "fs.inotify.max_user_watches=524288"
+    create: yes
+
 - include: journal.yaml
 - include: shell.yaml
 - include: packages.yaml
