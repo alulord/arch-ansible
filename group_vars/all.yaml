@@ -125,10 +125,10 @@ filesystem:
 video_drivers:
   - nouveau
   - nvidia
-#  - amdgpu
+  - amdgpu
 
-#gdm,lightdm, or empty for none
 display_manager:
+#gdm,lightdm
 
 gdm:
   sound: False
@@ -170,3 +170,5 @@ bluetooth:
 
 journal:
   max_size: 500M
+luks_uuid: 3b462b2f-e726-44fe-a697-3b3eba57039a
+root_uuid: 4aaf7eca-c41b-4218-a238-83bc15626278
