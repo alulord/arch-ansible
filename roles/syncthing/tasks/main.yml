@@ -1,6 +1,10 @@
 ---
 - name: Install syncthing
-  pacman: name=syncthing syncthing-gtk state=present
+  pacman: 
+    name: 
+      - syncthing
+      - syncthing-gtk
+    state: present
 
 - name: Copy syncthing service to user dir
   copy:
