@@ -81,8 +81,6 @@ aur:
     - yay
     - mailspring-libre
     - recapp-git
-    - bitwarden-bin
-    - bitwarden-cli-bin
 
 multimedia:
   packages:

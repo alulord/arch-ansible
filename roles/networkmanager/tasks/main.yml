@@ -19,3 +19,10 @@
     enabled: yes
     state: started
   when: network.dispatcher == True
+
+#https://steamcommunity.com/app/221410/discussions/2/616189106498372437/
+- name: Enable dns caching
+  lineinfile:
+    path: '/etc/NetworkManager/dnsmasq.d/cache'
+    create: yes
+    line: 'cache-size=1000'

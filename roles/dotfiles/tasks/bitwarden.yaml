@@ -1,4 +1,13 @@
 ---
+- name: Install bitwarden
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name:
+      - bitwarden-bin
+      - bitwarden-cli-bin
+  state: present
+
 - name: Creates directory for bitwarden rofi script
   become_user: "{{ user.name }}"
   become: yes
