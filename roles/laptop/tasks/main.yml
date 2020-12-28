@@ -33,3 +33,6 @@
   aur: name=battop
   tags:
     - aur
+
+- name: Install brightnessctl
+  pacman: name=brightnessctl state=present
